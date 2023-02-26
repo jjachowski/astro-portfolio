@@ -1,5 +1,6 @@
 ---
 import Card from '../components/Card.astro';
+import TailwindCard from '../components/TailwindCard.astro';
 import Layout from '../layouts/Layout.astro';
 ---
 
@@ -15,6 +16,10 @@ import Layout from '../layouts/Layout.astro';
     </div>
 
     <ul role='list' class='link-card-grid'>
+      <TailwindCard
+        title='Hello tailwind'
+        text='Adding tailwind was straightforward, just run one command form astro docs and works like a charm! 🌈🦄'
+      />
       <Card
         href='https://docs.astro.build/'
         title='Documentation'
@@ -24,16 +29,6 @@ import Layout from '../layouts/Layout.astro';
         href='https://astro.build/integrations/'
         title='Integrations'
         body='Supercharge your project with new frameworks and libraries.'
-      />
-      <Card
-        href='https://astro.build/themes/'
-        title='Themes'
-        body='Explore a galaxy of community-built starter themes.'
-      />
-      <Card
-        href='https://astro.build/chat/'
-        title='Community'
-        body='Come say hi to our amazing Discord community. ❤️'
       />
     </ul>
   </main>

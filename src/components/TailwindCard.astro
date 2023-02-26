@@ -1,0 +1,19 @@
+---
+export type Props = {
+  title: string;
+  text: string;
+};
+
+const { text, title } = Astro.props;
+---
+
+<div
+  class='bg-purple-400 hover:bg-purple-600 shadow-md rounded-md overflow-hidden hover:border-purple-600 hover:shadow-2xl border-purple-400 border-solid border-4'
+>
+  <h2 class='text-purple-100 text-3xl font-bold p-4 w-auto shadow-md'>
+    {title}
+  </h2>
+  <p class='p-4 pt-2 bg-purple-200 hover:bg-purple-300'>
+    {text}
+  </p>
+</div>
