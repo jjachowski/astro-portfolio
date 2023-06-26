@@ -1,10 +1,11 @@
 ---
 import Card from '../components/Card.astro';
+import Counter from '../components/Counter';
 import TailwindCard from '../components/TailwindCard.astro';
 import Layout from '../layouts/Layout.astro';
 ---
 
-<Layout title='Welcome to Astro.'>
+<Layout title='learning 🤡🔫'>
   <main>
     <h1>Welcome to <span class='text-gradient'>Astro-Portfolio</span></h1>
 
@@ -32,9 +33,12 @@ import Layout from '../layouts/Layout.astro';
       />
       <TailwindCard
         title='Color as props'
-        text='That kidn of suck in tailwind because you cannot do e.g. bg-${col}-300, class string has to be static'
+        text='That kind of sucks in tailwind because you cannot do e.g. bg-${col}-300, class string has to be static'
         color={'red'}
       />
+      <TailwindCard title='test' color='blue'>
+        <Counter client:load />
+      </TailwindCard>
     </ul>
   </main>
 </Layout>

@@ -2,26 +2,23 @@
 type Color = 'red' | 'blue' | 'green' | 'purple';
 export type Props = {
   title: string;
-  text: string;
+  text?: string;
   color?: Color;
+  hover?: boolean;
 };
 
-const { text, title, color = 'purple' } = Astro.props;
+const { text, title, color = 'purple', hover = true } = Astro.props;
 
-const colors = () => {
-  switch (color) {
-    case 'green':
-      return 'bg-green-400 hover:bg-green-600 hover:border-green-600 border-green-400';
-    case 'purple':
-      return `bg-purple-400 hover:bg-purple-600 hover:border-purple-600 border-purple-400`;
-    case 'red':
-      return 'bg-red-400 hover:bg-red-600 hover:border-red-600 border-red-400';
-    case 'blue':
-      return 'bg-blue-400 hover:bg-blue-600 hover:border-blue-600 border-blue-400';
-    default:
-      return 'bg-purple-400 hover:bg-purple-600 hover:border-purple-600 border-purple-400';
-  }
+const colors: Record<Color, string> = {
+  green:
+    'bg-green-400 hover:bg-green-600 hover:border-green-600 border-green-400',
+  purple:
+    'bg-purple-400 hover:bg-purple-600 hover:border-purple-600 border-purple-400',
+  red: 'bg-red-400 hover:bg-red-600 hover:border-red-600 border-red-400',
+  blue: 'bg-blue-400 hover:bg-blue-600 hover:border-blue-600 border-blue-400',
 };
+
+const selectedColor = colors[color];
 
 const bodyBg = () => {
   switch (color) {
@@ -40,12 +37,13 @@ const bodyBg = () => {
 ---
 
 <div
-  class={`overflow-hidden rounded-md border-4 border-solid hover:shadow-2xl ${colors()}`}
+  class={`overflow-hidden rounded-md border-4 border-solid hover:shadow-2xl ${selectedColor}`}
 >
   <h2 class={`w-auto p-4 text-3xl font-bold text-white shadow-md`}>
     {title}
   </h2>
-  <p class={`${bodyBg()} p-4 pt-2`}>
-    {text}
-  </p>
+  <div class={`${bodyBg()} p-4 pt-2`}>
+    {text && <p>{text}</p>}
+    <slot />
+  </div>
 </div>
